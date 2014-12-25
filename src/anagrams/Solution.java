@@ -16,22 +16,22 @@ public class Solution {
 			return result;
 		}
 		HashMap<String, ArrayList<String>> hm = new HashMap<String, ArrayList<String>> ();
-        for (String str : strs) {
-        	char[] temp = str.toCharArray();
-        	Arrays.sort(temp);
-        	String tempstr = new String(temp);
-        	if (hm.containsKey(tempstr)) {
-        		if (hm.get(tempstr).size() == 1) {
-        			result.add(hm.get(tempstr).get(0));
-        		}
-        		hm.get(tempstr).add(str);
-        		result.add(str);
-        	} else {
-        		ArrayList<String> newAdd = new ArrayList<String> ();
-        		newAdd.add(str);
-        		hm.put(tempstr, newAdd);
-        	}
+    for (String str : strs) {
+      char[] temp = str.toCharArray();
+      Arrays.sort(temp);
+      String tempstr = new String(temp);
+      if (hm.containsKey(tempstr)) {
+        if (hm.get(tempstr).size() == 1) {
+          result.add(hm.get(tempstr).get(0));
         }
-        return result;
+        hm.get(tempstr).add(str);
+        result.add(str);
+      } else {
+        ArrayList<String> newAdd = new ArrayList<String> ();
+        newAdd.add(str);
+        hm.put(tempstr, newAdd);
+      }
     }
+    return result;
+  }
 }

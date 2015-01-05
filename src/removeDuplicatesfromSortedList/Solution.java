@@ -26,7 +26,7 @@ public class Solution {
         		if (ptr2 == null) {
         			ptr1.next = null;
         		}
-        	}else {
+        	} else {
         		ptr1.next = ptr2;
         		ptr1 = ptr1.next;
         		ptr2 = ptr2.next;

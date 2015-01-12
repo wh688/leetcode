@@ -34,23 +34,22 @@ public class Solution {
 		
 		ListNode fakeHead = new ListNode(-1);
 		ListNode result = fakeHead;
-		
-        while (l1 != null || l2 != null) {
-        	if (l1 != null) {
-        		carry += l1.val;
-        		l1 = l1.next;
-        	}
-        	if (l2 != null) {
-        		carry += l2.val;
-        		l2 = l2.next;
-        	}
-        	result.next = new ListNode(carry % 10);
-        	carry = carry / 10;
-        	result = result.next;
-        }
-        if(carry == 1) {
-        	result.next = new ListNode(1);
-        }
-        return fakeHead.next;
-    }
+		while (l1 != null || l2 != null) {
+			if (l1 != null) {
+				carry += l1.val;
+				l1 = l1.next;
+			}
+			if (l2 != null) {
+				carry += l2.val;
+				l2 = l2.next;
+			}
+			result.next = new ListNode(carry % 10);
+			carry = carry / 10;
+			result = result.next;
+		}
+		if(carry == 1) {
+			result.next = new ListNode(1);
+		}
+		return fakeHead.next;
+	}
 }

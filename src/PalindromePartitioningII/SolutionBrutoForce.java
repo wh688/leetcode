@@ -1,26 +1,33 @@
-package PalindromePartitioning;
+package PalindromePartitioningII;
 
 import java.util.ArrayList;
 
-public class Solution {
-	public ArrayList<ArrayList<String>> partition(String s) {
+public class SolutionBrutoForce {
+	public static int minCut(String s) {
 		ArrayList<ArrayList<String>> result = new ArrayList<ArrayList<String>>();
 		if (s == null || s.length() == 0) {
-			return result;
+			return 0;
 		}
 		ArrayList<String> path = new ArrayList<String>();
 		helper(s, 0, path, result);
-		return result;
+		int min = Integer.MAX_VALUE;
+		for (ArrayList<String> element : result) {
+			if (element.size() < min) {
+				min = element.size();
+			}
+		}
+		return min - 1;
 	}
 
 	public static void main(String[] args) {
+		//System.out.println(minCut("aabac"));
 	}
 
 	public static boolean isPalindrome(String s) {
 		return (new StringBuilder(s).reverse().toString()).equals(s) ? true : false;
 	}
 
-	public void helper(String s, int index, ArrayList<String> path,
+	public static void helper(String s, int index, ArrayList<String> path,
 			ArrayList<ArrayList<String>> result) {
 		if (index == s.length()) {
 			result.add(new ArrayList<String>(path));

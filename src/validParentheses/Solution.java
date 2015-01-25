@@ -7,27 +7,28 @@ import java.util.Stack;
  */
 
 public class Solution {
-	public boolean isValid(String s) {
-		if (s.length() <= 1) {
-			return false;
+    public boolean isValid(String s) {
+	if (s.length() <= 1) {
+	    return false;
+	}
+	Stack<Character> stack = new Stack<Character>();
+	for (int i = 0; i < s.length(); i++) {
+	    char p = s.charAt(i);
+	    if (p == '(' || p == '[' || p == '{') {
+		stack.push(p);
+	    } else {
+		if (stack.size() == 0) {
+		    return false;
 		}
-        Stack<Character> stack = new Stack<Character> ();
-        for (int i = 0; i < s.length(); i++) {
-        	char p = s.charAt(i);
-        	if (p == '(' || p == '[' || p == '{') {
-        		stack.push(p);
-        	} else {
-        		if (stack.size() == 0) {
-        			return false;
-        		}
-        		char top = stack.pop();
-        		if ((top == '(' && p == ')') || (top == '[' && p == ']') || (top == '{' && p == '}')){
-        			continue;
-        		} else {
-        			return false;
-        		}
-        	}
-        }
-        return stack.size() == 0;
+		char top = stack.pop();
+		if ((top == '(' && p == ')') || (top == '[' && p == ']')
+			|| (top == '{' && p == '}')) {
+		    continue;
+		} else {
+		    return false;
+		}
+	    }
+	}
+	return stack.size() == 0;
     }
 }

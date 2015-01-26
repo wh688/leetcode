@@ -13,7 +13,19 @@ class ListNode {
 }
 
 public class Solution {
-    private Comparator<ListNode> ListNodeComparator = new Comparator<ListNode>() {
+    // private Comparator<ListNode> ListNodeComparator = new
+    // Comparator<ListNode>() {
+    // public int compare(ListNode left, ListNode right) {
+    // if (left == null) {
+    // return 1;
+    // } else if (right == null) {
+    // return -1;
+    // }
+    // return left.val - right.val;
+    // }
+    // };
+    //
+    private class ListNodeComparator implements Comparator<ListNode> {
 	public int compare(ListNode left, ListNode right) {
 	    if (left == null) {
 		return 1;
@@ -22,14 +34,14 @@ public class Solution {
 	    }
 	    return left.val - right.val;
 	}
-    };
+    }
 
     public ListNode mergeKLists(ArrayList<ListNode> lists) {
 	if (lists == null || lists.size() == 0) {
 	    return null;
 	}
 	Queue<ListNode> heap = new PriorityQueue<ListNode>(lists.size(),
-		ListNodeComparator);
+		new ListNodeComparator());
 	for (int i = 0; i < lists.size(); i++) {
 	    if (lists.get(i) != null) {
 		heap.add(lists.get(i));
